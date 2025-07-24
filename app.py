@@ -4,7 +4,7 @@ import redis
 app = Flask(__name__)
 
 # Connect to Redis
-r = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
+r = redis.Redis(host='redis', port=6379, db=0, decode_responses=True)
 
 # Initialize vote keys if not present
 if not r.exists("votes:cats"):
@@ -28,5 +28,5 @@ def results():
     return render_template('results.html', votes={'cats': cats, 'dogs': dogs})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
