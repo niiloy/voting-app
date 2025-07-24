@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <style>
+        body {
+            background-color: #00aaff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+            padding-top: 100px;
+        }
+        .result-box {
+            background: white;
+            display: inline-flex;
+            padding: 40px;
+            border-radius: 8px;
+            font-size: 24px;
+            color: #333;
+        }
+        .vote {
+            flex: 1;
+            margin: 0 30px;
+            text-align: center;
+        }
+        .cats {
+            color: #007bff;
+        }
+        .dogs {
+            color: #00c8c8;
+        }
+        hr.vertical {
+            width: 1px;
+            background-color: #ccc;
+            border: none;
+        }
+        a {
+            display: block;
+            margin-top: 40px;
+            color: white;
+            text-decoration: underline;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <div class="vote cats">
+            <div><strong>CATS</strong></div>
+            <div>{{ '{:.1f}'.format(100 * votes['cats'] / (votes['cats'] + votes['dogs'])) if (votes['cats'] + votes['dogs']) > 0 else '0.0' }}%</div>
+        </div>
+        <div class="vote dogs">
+            <div><strong>DOGS</strong></div>
+            <div>{{ '{:.1f}'.format(100 * votes['dogs'] / (votes['cats'] + votes['dogs'])) if (votes['cats'] + votes['dogs']) > 0 else '0.0' }}%</div>
+        </div>
+    </div>
+    <a href="/">Back to Vote</a>
+</body>
+</html>
+
