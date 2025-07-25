@@ -3,8 +3,11 @@ version: '3.8'
 services:
   web:
     build: .
+    image: localhost:5000/voting-app_web:1.0
+    deploy:
+      replicas: 3
     ports:
-      - "5000:5000"
+      - "8080:5000"
     depends_on:
       - redis
     environment:
@@ -23,5 +26,5 @@ services:
 
 networks:
   mynet:
-    driver: bridge
+    driver: overlay
 
